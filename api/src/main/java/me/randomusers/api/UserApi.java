@@ -1,31 +1,25 @@
 package me.randomusers.api;
 
-import me.randomusers.Responses;
-import me.randomusers.ApiInvoker;
-import me.randomusers.ApiException;
-import me.randomusers.Pair;
-
-import me.randomusers.model.*;
-
-import java.util.*;
-
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-
-import me.randomusers.model.UserReponse;
-import java.math.BigDecimal;
-
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 
-import java.util.Map;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.io.File;
+import java.util.List;
+import java.util.Map;
+
+import me.randomusers.ApiException;
+import me.randomusers.ApiInvoker;
+import me.randomusers.Pair;
+import me.randomusers.model.UserArray;
 
 
 public class UserApi {
-  String basePath = "https://api.randomuser.me/api";
+  String basePath = "http://api.randomuser.me/";
   ApiInvoker apiInvoker = ApiInvoker.getInstance();
 
   public void addHeader(String key, String value) {
@@ -52,9 +46,9 @@ public class UserApi {
    * @param seed Seeds allow you to always generate the same set of users.
    * @param nat Specify a nationality. i.e. gb
    * @param results Specify a nationality. i.e. gb
-   * @return UserReponse
+   * @return UserArray
    */
-  public void getRandomUser (String format, String seed, String nat, BigDecimal results, final Responses.UserReponseResponse responseListener, final Response.ErrorListener errorListener) {
+  public void getRandomUser (String format, String seed, String nat, BigDecimal results, final Response.Listener<UserArray> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
   
@@ -107,7 +101,7 @@ public class UserApi {
           public void onResponse(String response) {
             
             try {
-              responseListener.onResponse((UserReponse) ApiInvoker.deserialize(response,  "", UserReponse.class));
+              responseListener.onResponse((UserArray) ApiInvoker.deserialize(response,  "", UserArray.class));
               
               
             

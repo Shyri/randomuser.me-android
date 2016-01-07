@@ -13,7 +13,7 @@ public class JsonUtil {
   static {
     gsonBuilder = new GsonBuilder();
     gsonBuilder.serializeNulls();
-    gsonBuilder.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    gsonBuilder.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
   }
 
   public static Gson getGson() {
@@ -35,12 +35,16 @@ public class JsonUtil {
   public static Type getListTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
-    if ("UserReponse".equalsIgnoreCase(className)) {
-      return new TypeToken<List<UserReponse>>(){}.getType();
+    if ("UserArray".equalsIgnoreCase(className)) {
+      return new TypeToken<List<UserArray>>(){}.getType();
     }
     
     if ("User".equalsIgnoreCase(className)) {
       return new TypeToken<List<User>>(){}.getType();
+    }
+    
+    if ("UserData".equalsIgnoreCase(className)) {
+      return new TypeToken<List<UserData>>(){}.getType();
     }
     
     if ("StructuredName".equalsIgnoreCase(className)) {
@@ -61,12 +65,16 @@ public class JsonUtil {
   public static Type getTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
-    if ("UserReponse".equalsIgnoreCase(className)) {
-      return new TypeToken<UserReponse>(){}.getType();
+    if ("UserArray".equalsIgnoreCase(className)) {
+      return new TypeToken<UserArray>(){}.getType();
     }
     
     if ("User".equalsIgnoreCase(className)) {
       return new TypeToken<User>(){}.getType();
+    }
+    
+    if ("UserData".equalsIgnoreCase(className)) {
+      return new TypeToken<UserData>(){}.getType();
     }
     
     if ("StructuredName".equalsIgnoreCase(className)) {

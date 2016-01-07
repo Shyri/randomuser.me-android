@@ -10,10 +10,10 @@ import com.google.gson.annotations.SerializedName;
 
 
 @ApiModel(description = "")
-public class UserReponse  {
+public class UserArray  {
   
-  @SerializedName("result")
-  private List<User> result = null;
+  @SerializedName("results")
+  private List<User> results = null;
   @SerializedName("nationality")
   private String nationality = null;
   @SerializedName("seed")
@@ -25,11 +25,11 @@ public class UserReponse  {
   /**
    **/
   @ApiModelProperty(value = "")
-  public List<User> getResult() {
-    return result;
+  public List<User> getResults() {
+    return results;
   }
-  public void setResult(List<User> result) {
-    this.result = result;
+  public void setResults(List<User> results) {
+    this.results = results;
   }
 
   
@@ -70,9 +70,9 @@ public class UserReponse  {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserReponse {\n");
+    sb.append("class UserArray {\n");
     
-    sb.append("  result: ").append(result).append("\n");
+    sb.append("  results: ").append(results).append("\n");
     sb.append("  nationality: ").append(nationality).append("\n");
     sb.append("  seed: ").append(seed).append("\n");
     sb.append("  version: ").append(version).append("\n");

@@ -1,0 +1,190 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "RandomUser.me API",
+        "description": "A free API for generating random user data. Like Lorem Ipsum, but for people. See more at https://randomuser.me",
+        "version": "0.7.0"
+    },
+    "host": "api.randomuser.me",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "description": "Ask for a randomly generated user",
+                "operationId": "getRandomUser",
+                "tags": [
+                    "User"
+                ],
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "Format of response you want. Possible values JSON, SQL, CSV, or YAML.\n",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "seed",
+                        "in": "query",
+                        "description": "Seeds allow you to always generate the same set of users.\n",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nat",
+                        "in": "query",
+                        "description": "Specify a nationality. i.e. gb",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "results",
+                        "in": "query",
+                        "description": "Specify a nationality. i.e. gb",
+                        "required": false,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/UserArray"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "UserArray": {
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/User"
+                    }
+                },
+                "nationality": {
+                    "type": "string"
+                },
+                "seed": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+        "User": {
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/UserData"
+                }
+            }
+        },
+        "UserData": {
+            "properties": {
+                "gender": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "salt": {
+                    "type": "string"
+                },
+                "md5": {
+                    "type": "string"
+                },
+                "sha1": {
+                    "type": "string"
+                },
+                "sha256": {
+                    "type": "string"
+                },
+                "registered": {
+                    "type": "string"
+                },
+                "dob": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "cell": {
+                    "type": "string"
+                },
+                "DNI": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "nationality": {
+                    "type": "string"
+                },
+                "name": {
+                    "$ref": "#/definitions/StructuredName"
+                },
+                "location": {
+                    "$ref": "#/definitions/StructuredPostal"
+                },
+                "picture": {
+                    "$ref": "#/definitions/StructuredPicture"
+                }
+            }
+        },
+        "StructuredName": {
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "first": {
+                    "type": "string"
+                },
+                "last": {
+                    "type": "string"
+                }
+            }
+        },
+        "StructuredPostal": {
+            "properties": {
+                "street": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zip": {
+                    "type": "string"
+                }
+            }
+        },
+        "StructuredPicture": {
+            "properties": {
+                "large": {
+                    "type": "string"
+                },
+                "medium": {
+                    "type": "string"
+                },
+                "thumbnail": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

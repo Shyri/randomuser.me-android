@@ -19,9 +19,15 @@ ext {
     gson_version = '2.3.1'
     httpclient_version = "4.3.3"
     swagger_annotations_version = "1.5.0"
+    butterKnifeVersion = '7.0.1'
 
     //Testing
     jUnitVersion = '4.12'
+
+    appDependencies = [
+        appcompat:          "com.android.support:appcompat-v7:${appcompat_version}",
+        butterKnife:        "com.jakewharton:butterknife:${butterKnifeVersion}",
+    ]
 
     apiDependencies = [
         volley:             "com.mcxiaoke.volley:library:${volley_version}@aar",

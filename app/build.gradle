@@ -17,10 +17,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+
+    def appDependencies = rootProject.ext.appDependencies
+    compile appDependencies.appcompat
+    compile appDependencies.butterKnife
+
+
+    def testingDependencies = rootProject.ext.testingDependencies
+    testCompile testingDependencies.junit
+
+    compile project(path: ':api')
 }
